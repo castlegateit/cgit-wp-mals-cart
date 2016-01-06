@@ -1,6 +1,14 @@
 <?php
 
-$cart = cgit_mals_cart();
+$cart = Cgit\MalsCart::getInstance();
+$contents = $cart->contents();
+
+if ($contents) {
+    $items = $contents['quantity'] > 1 ? 'items' : 'item';
+    $price = $cart::formatCurrency($contents['total']);
+
+    echo '<p>' . $contents['quantity'] . ' ' . $items . ': ' . $price . '</p>';
+}
 
 ?>
 <div class="mals-cart-view">

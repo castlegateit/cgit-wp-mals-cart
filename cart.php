@@ -18,6 +18,9 @@ class MalsCart extends ProductUtil
 
     /**
      * Mal's Cart action URLs
+     *
+     * These are modified in the constructor to use the correct Mal's Cart
+     * server numbers.
      */
     public $urls = array(
         'add' => '//ww#.aitsafe.com/cf/add.cfm',
@@ -32,11 +35,21 @@ class MalsCart extends ProductUtil
      */
     private function __construct()
     {
+        // Start session to store cart contents
+        session_start();
+
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = array();
+        }
+
         // Set view path
         $this->viewPath = dirname(__FILE__) . '/views';
 
         // Set account URLs
         $this->updateUrls();
+
+        // Update cart contents
+        $this->updateContents();
     }
 
     /**
@@ -55,7 +68,8 @@ class MalsCart extends ProductUtil
      * Update URLs
      *
      * Each Mal's Cart uses a different numbered server. This method updates the
-     * URL properties to use the numbered server from CGIT_MALS_CART_URL.
+     * URL properties to use the numbered server from CGIT_MALS_CART_URL. It
+     * also sets the return URL to the URL of the current page in WordPress.
      */
     private function updateUrls()
     {
@@ -70,5 +84,37 @@ class MalsCart extends ProductUtil
 
         // Set return URL to current URL
         $this->urls['return'] = home_url(add_query_arg(array()));
+    }
+
+    /**
+     * Get cart contents
+     *
+     * Retrieves the cart contents stored in the local session, but does not get
+     * any data from Mal's Cart itself.
+     */
+    public function contents()
+    {
+        return $_SESSION['cart'];
+    }
+
+    /**
+     * Update cart contents
+     *
+     * If GET or POST requests are received from Mal's Cart, this method updates
+     * the cart contents stored in the local session.
+     */
+    public function updateContents()
+    {
+        if (!isset($_REQUEST['qty'])) {
+            return;
+        }
+
+        if ((int) $_REQUEST['qty'] == 0) {
+            $_SESSION['cart'] = array();
+            return;
+        }
+
+        $_SESSION['cart']['quantity'] = (int) $_REQUEST['qty'];
+        $_SESSION['cart']['total'] = (float) $_REQUEST['tot'];
     }
 }

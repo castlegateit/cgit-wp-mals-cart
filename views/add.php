@@ -7,7 +7,7 @@ if (!is_singular(CGIT_PRODUCT_POST_TYPE)) {
 global $post;
 
 $product = new Cgit\Product($post->ID);
-$cart = cgit_mals_cart();
+$cart = Cgit\MalsCart::getInstance();
 
 ?>
 <div class="mals-cart-add">
