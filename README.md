@@ -37,8 +37,10 @@ The `Cgit\MalsCart` object provides various methods:
 The cart contents are stored locally as an array in `$_SESSION['cart']`. A cart might something like:
 
     $_SESSION = array(
-        'quantity' => 4, // number of items in cart
-        'total' => 12.80, // total price of all items in cart
+        'cart' => array(
+            'quantity' => 4, // number of items in cart
+            'total' => 12.80, // total price of all items in cart
+        ),
     );
 
 ## Filters ##
