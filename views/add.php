@@ -33,17 +33,8 @@ $cart = Cgit\MalsCart::getInstance();
                 <?php
 
                 foreach ($product->product_variants as $key => $variant) {
-                    $selected = '';
-
-                    if (
-                        isset($_POST['cart_variant']) &&
-                        $_POST['cart_variant'] == $key
-                    ) {
-                        $selected = ' selected';
-                    }
-
                     ?>
-                    <option value="<?= $variant['variant_name'] ?>"<?= $selected ?>><?= $variant['variant_name'] ?></option>
+                    <option value="<?= $variant['variant_name'] ?>"><?= $variant['variant_name'] ?></option>
                     <?php
                 }
 
