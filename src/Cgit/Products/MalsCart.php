@@ -22,11 +22,11 @@ class MalsCart extends Utilities
      * These are modified in the constructor to use the correct Mal's Cart
      * server numbers.
      */
-    public $urls = array(
+    public $urls = [
         'add' => '//ww#.aitsafe.com/cf/add.cfm',
         'view' => '//ww#.aitsafe.com/cf/review.cfm',
         'return' => '',
-    );
+    ];
 
     /**
      * Constructor
@@ -39,7 +39,7 @@ class MalsCart extends Utilities
         session_start();
 
         if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = array();
+            $_SESSION['cart'] = [];
         }
 
         // Set view path
@@ -86,7 +86,7 @@ class MalsCart extends Utilities
         }
 
         // Set return URL to current URL
-        $this->urls['return'] = home_url(add_query_arg(array()));
+        $this->urls['return'] = home_url(add_query_arg([]));
     }
 
     /**
@@ -113,7 +113,7 @@ class MalsCart extends Utilities
         }
 
         if ((int) $_REQUEST['qty'] == 0) {
-            $_SESSION['cart'] = array();
+            $_SESSION['cart'] = [];
             return;
         }
 
