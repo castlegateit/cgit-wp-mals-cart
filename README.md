@@ -18,11 +18,11 @@ The plugin provides two widgets: Cart Contents and Add to Cart. The Add to Cart 
 The plugin provides a single function `cgit_mals_cart()`, which retrieves the cart object. The object uses a singleton pattern, which means it can only have one instance.
 
     $cart = cgit_mals_cart();
-    $cart = Cgit\MalsCart::getInstance(); // same as above
+    $cart = Cgit\Products\MalsCart::getInstance(); // same as above
 
 ## Methods ##
 
-The `Cgit\MalsCart` object provides various methods:
+The `Cgit\Products\MalsCart` object provides various methods:
 
 *   `$cart->render($view)` returns the compiled output of a PHP file from the `views` directory within the plugin. There are two views: `contents` and `add`, which are used by the widgets to render content.
 

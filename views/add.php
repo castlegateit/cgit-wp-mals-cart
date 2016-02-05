@@ -1,13 +1,16 @@
 <?php
 
+use Cgit\Products\MalsCart;
+use Cgit\Products\Product;
+
 if (!is_singular(CGIT_PRODUCT_POST_TYPE)) {
     return;
 }
 
 global $post;
 
-$product = new Cgit\Product($post->ID);
-$cart = Cgit\MalsCart::getInstance();
+$product = new Product($post->ID);
+$cart = MalsCart::getInstance();
 
 ?>
 <div class="mals-cart-add">

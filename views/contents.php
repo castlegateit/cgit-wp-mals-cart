@@ -1,6 +1,8 @@
 <?php
 
-$cart = Cgit\MalsCart::getInstance();
+use Cgit\Products\MalsCart;
+
+$cart = MalsCart::getInstance();
 $contents = $cart->contents();
 $message = '';
 
