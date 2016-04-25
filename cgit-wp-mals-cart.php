@@ -14,7 +14,7 @@ License: MIT
 
 use Cgit\Products\MalsCart;
 
-$plugin_file = __FILE__;
+define('CGIT_MALS_CART_PLUGIN_FILE', __FILE__);
 
 require __DIR__ . '/src/autoload.php';
 require __DIR__ . '/activation.php';

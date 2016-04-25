@@ -126,8 +126,7 @@ class MalsCart extends Utilities
      */
     public function registerWidgets()
     {
-        register_widget('Cgit\Products\MalsCartContentsWidget');
-        register_widget('Cgit\Products\MalsCartAddWidget');
+        register_widget('Cgit\Products\Widgets\MalsCartContents');
+        register_widget('Cgit\Products\Widgets\MalsCartAdd');
     }
-
 }

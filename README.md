@@ -17,8 +17,10 @@ The plugin provides two widgets: Cart Contents and Add to Cart. The Add to Cart 
 
 The plugin provides a single function `cgit_mals_cart()`, which retrieves the cart object. The object uses a singleton pattern, which means it can only have one instance.
 
-    $cart = cgit_mals_cart();
-    $cart = Cgit\Products\MalsCart::getInstance(); // same as above
+~~~ php
+$cart = cgit_mals_cart();
+$cart = Cgit\Products\MalsCart::getInstance(); // same as above
+~~~
 
 ## Methods ##
 
@@ -36,12 +38,14 @@ The `Cgit\Products\MalsCart` object provides various methods:
 
 The cart contents are stored locally as an array in `$_SESSION['cart']`. A cart might something like:
 
-    $_SESSION = array(
-        'cart' => array(
-            'quantity' => 4, // number of items in cart
-            'total' => 12.80, // total price of all items in cart
-        ),
-    );
+~~~ php
+$_SESSION = array(
+    'cart' => array(
+        'quantity' => 4, // number of items in cart
+        'total' => 12.80, // total price of all items in cart
+    ),
+);
+~~~
 
 ## Filters ##
 

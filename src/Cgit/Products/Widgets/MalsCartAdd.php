@@ -1,11 +1,13 @@
 <?php
 
-namespace Cgit\Products;
+namespace Cgit\Products\Widgets;
+
+use Cgit\Products\MalsCart;
 
 /**
  * Cart add widget
  */
-class MalsCartAddWidget extends \WP_Widget
+class MalsCartAdd extends \WP_Widget
 {
 
     /**
